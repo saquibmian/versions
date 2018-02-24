@@ -63,7 +63,7 @@ func Compare(v1 Version, v2 Version) int {
 	return strings.Compare(v1.Suffix, v2.Suffix)
 }
 
-func Equals(v1 Version, v2 Version) bool {
+func Equal(v1 Version, v2 Version) bool {
 	return Compare(v1, v2) == 0
 }
 
@@ -94,13 +94,13 @@ func ParseString(str string) (Version, error) {
 			return toReturn, ErrInvalidVersionFormat
 		}
 		switch i {
-		case 1:
+		case 0:
 			toReturn.Major = number
-		case 2:
+		case 1:
 			toReturn.Minor = number
-		case 3:
+		case 2:
 			toReturn.Patch = number
-		case 4:
+		case 3:
 			toReturn.Build = number
 		default:
 			return toReturn, ErrInvalidVersionFormat
